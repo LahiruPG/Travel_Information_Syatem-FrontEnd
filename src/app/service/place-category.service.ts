@@ -2,10 +2,10 @@ import { Injectable } from '@angular/core';
 import { Http } from '../../../node_modules/@angular/http';
 
 @Injectable()
-export class PlaceService {
+export class PlaceCategoryService {
   MAIN_URL= "http://localhost:8080";
-  URL="/api/v1/places/";
-   
+  URL="/api/v1/placecategory/";
+
   constructor( private http: Http) { } 
    getAll(){
     console.log("GetAll Request");
