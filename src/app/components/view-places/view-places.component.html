@@ -1,41 +1,13 @@
 <div class="row">
   <div class="col-md-2">
-    <div class="list-group" #p>
-      <a  
-      class="list-group-item list-group-item-action"  
-      [class.active]="!category"
-      routerLink="/view-places"
-      > All Categorys</a>
-      <a 
-      *ngFor="let p of pcategoty" 
-      routerLink="/view-places"
-      [queryParams]="{ category: p.name}"
-      class="list-group-item list-group-item-action" 
-      [class.active]="category === p.name"
-      >{{p.name}}</a>
-     
-    </div>
+    <places-filter [category]="category"></places-filter>
   </div>
-  <div class="col-md-10">
+  <div class="col-md-10 ">
     <div class="row">
       <div class="card-deck">
-        <ng-container *ngFor="let p of filteredPlaces; let i =index">
-          <!-- <div class="col"> -->
-
-          <div class="card mb-5">
-            <h5 class="card-header">{{p.name}}</h5>
-            <img class="card-img-top" [src]="p.notes" alt="Card image cap">
-            <div class="card-body">
-              <p class="card-text">{{p.description}}</p>
-            </div>
-            <div class="card-footer">
-              <small class="text-muted"><button class="btn btn-primary">More info {{p.id}}</button></small>
-              <!-- </div> -->
-            </div><!-- card 01 -->
-
-          </div>
+        <ng-container class="" *ngFor="let p of filteredPlaces; let i =index">
+          <place-card [place]="p" class="card mb-5 "></place-card>
           <div *ngIf="(i + 1) % 3 === 0" class="w-100"></div>
-
         </ng-container>
       </div><!-- card block -->
     </div>

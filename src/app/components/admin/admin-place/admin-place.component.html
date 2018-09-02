@@ -1,25 +1,28 @@
-<p>
-    <a routerLink="/admin/manage-places/add-place"> <button class="btn btn-primary">Add new place</button></a>
-</p>
+<div class="row">
+    <div class="col-md-6">
+        <p>
+            <a routerLink="/admin/manage-places/add-place"> <button class="btn btn-primary">Add new place</button></a>
+        </p>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>District</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let p of places">
+                    <td>{{p.name}}</td>
+                    <td>{{p.address}}</td>
+                    <td>
+                        <a [routerLink]="['/admin/manage-places/add-place/', p.id]">Edit</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="col-md-6">
 
-
-
-<table class="table">
-    <thead>
-        <tr>
-            <th>Title</th>
-            <th>District</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let p of places">
-            <td>{{p.name}}</td>
-            <td>{{p.address}}</td>
-            <td>
-                <a [routerLink]="['/admin/manage-places/add-place/', p.id]">Edit</a>            
-            </td>
-        </tr>
-    </tbody>
-</table>
-
+    </div>
+</div>

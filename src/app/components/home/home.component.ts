@@ -11,10 +11,14 @@ import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
 })
 export class HomeComponent implements OnInit {
 
-  images = [1, 2, 3].map(() => `https://picsum.photos/900/500?random&t=${Math.random()}`);
+  images = [
+  "https://www.copytrans.net/admin/wp/wp-content/uploads/2015/07/sunrise-on-forest-1920x500.jpg",
+  "https://www.socialprint.com/wp-content/uploads/banner.policies.1920x500.png",
+  "https://www.middleforkwillamette.org/wp-content/uploads/2016/05/DSCN2749-1920x500.jpg"
+];
 
   constructor() {
-   
+   console.log(this.images);
   }
 
 

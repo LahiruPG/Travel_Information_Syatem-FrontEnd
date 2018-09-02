@@ -15,6 +15,9 @@ import { AboutComponent } from './components/about/about.component';
 import { PlaceFormComponent } from './components/admin/place-form/place-form.component';
 import { AdminPlaceComponent } from './components/admin/admin-place/admin-place.component';
 import { ViewPlacesComponent } from './components/view-places/view-places.component';
+import { PlacesFilterComponent } from './components/view-places/places-filter/places-filter.component';
+import { PlaceCardComponent } from './components/place-card/place-card.component';
+import { LoginComponent } from './components/login/login.component';
 
 
 
@@ -27,6 +30,9 @@ import { ViewPlacesComponent } from './components/view-places/view-places.compon
     PlaceFormComponent,
     AdminPlaceComponent,
     ViewPlacesComponent,
+    PlacesFilterComponent,
+    PlaceCardComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule, 
@@ -40,7 +46,8 @@ import { ViewPlacesComponent } from './components/view-places/view-places.compon
       {path: 'admin/manage-places/add-place',component: PlaceFormComponent},
       {path: 'admin/manage-places/add-place/:id', component: PlaceFormComponent},
       {path: 'admin/manage-places',component: AdminPlaceComponent},
-      {path: 'view-places',component: ViewPlacesComponent}
+      {path: 'view-places',component: ViewPlacesComponent},
+      {path: 'login',component: LoginComponent}
       
 
     ])

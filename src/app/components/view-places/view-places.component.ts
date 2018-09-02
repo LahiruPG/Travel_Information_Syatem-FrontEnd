@@ -1,4 +1,3 @@
-import { PlaceCategoryService } from './../../service/place-category.service';
 import { PlaceService } from './../../service/place.service';
 import { Component, OnInit } from '@angular/core';
 import { Place } from './../../dto/place';
@@ -12,18 +11,17 @@ import { ActivatedRoute } from '@angular/router';
 export class ViewPlacesComponent implements OnInit {
   places: Place[]=[];
   filteredPlaces= [];
-  pcategoty=[];
+  
   category:string;
   constructor(
     private route: ActivatedRoute, 
-    private plaveservice: PlaceService, 
-    private pcategoryservice: PlaceCategoryService) {
+    private plaveservice: PlaceService
+    ) {
 
   }
 
   ngOnInit() {
-    this.plaveservice.getAll()
-    .subscribe(response =>{
+    this.plaveservice.getAll().subscribe(response =>{
       this.places = response.json();
 
       this.route.queryParamMap.subscribe(params =>{
@@ -34,11 +32,7 @@ export class ViewPlacesComponent implements OnInit {
       });
 
     });
-    this.pcategoryservice.getAll()
-    .subscribe(response =>{
-      this.pcategoty = response.json();
-      console.log(this.pcategoty);
-    });
+   
     
     
 
