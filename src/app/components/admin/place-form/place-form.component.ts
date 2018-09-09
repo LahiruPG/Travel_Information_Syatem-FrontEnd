@@ -1,7 +1,7 @@
 import { Place } from './../../../dto/place';
 import { PlaceService } from './../../../service/place.service';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, RouterLink, RouterEvent } from '../../../../../node_modules/@angular/router';
+import { ActivatedRoute, RouterLink, RouterEvent, Router } from '../../../../../node_modules/@angular/router';
 import 'rxjs/add/operator/take';
 import {Subject} from 'rxjs';
 import {debounceTime} from 'rxjs/operators';
@@ -27,7 +27,9 @@ export class PlaceFormComponent implements OnInit {
   constructor(
     private pcategory: PlaceCategoryService,
     private rout: ActivatedRoute,
-    private service: PlaceService) {
+    private service: PlaceService,
+    private router: Router
+  ) {
     this.id = this.rout.snapshot.paramMap.get('id');
     if (this.id) this.service.get(this.id).take(1).subscribe(p => this.place = p.json());
   }
@@ -43,6 +45,7 @@ export class PlaceFormComponent implements OnInit {
     if(this.id) this.update(post);
     else this.service.save(post);
    this.changeSuccessMessage();
+   this.router.navigate(['/admin/manage-places/']);
   }
 
   getAll() {
@@ -51,7 +54,7 @@ export class PlaceFormComponent implements OnInit {
 
   update(put) {
     this.service.update(put);
-    this.changeSuccessMessage();
+    this.changeSuccessMessage(); 
     
   }
 

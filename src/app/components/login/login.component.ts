@@ -1,4 +1,7 @@
+import { User } from './../../dto/user';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from '../../service/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -6,14 +9,26 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
-  constructor() { }
+  invalidLogin = false;
+  user: User;
+  constructor(
+    private router: Router,
+    private authService: AuthService
+  ) { }
 
   ngOnInit() {
   }
 
-  save(vslues){
-    console.log(vslues);
+  save(values) {
+    this.authService.logIn(values)
+      .subscribe(result => {
+        if (result)
+          this.router.navigate(['/']);
+        else
+          this.invalidLogin = true;
+      })
   }
 
+  
+  
 }

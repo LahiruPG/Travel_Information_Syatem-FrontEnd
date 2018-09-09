@@ -1,12 +1,15 @@
+import { AuthGurdService } from './service/auth-gurd.service';
+
+import { AuthService } from './service/auth.service';
 import { PlaceCategoryService } from './service/place-category.service';
-import {HttpModule } from '@angular/http';
+import { HttpModule } from '@angular/http';
 import { PlaceService } from './service/place.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {RouterModule} from '@angular/router';
-import {FormsModule} from '@angular/forms';
+import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 import { CustomFormsModule } from 'ng2-validation';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent } from './app.component';
 import { TopNavbarComponent } from './components/top-navbar/top-navbar.component';
@@ -35,26 +38,42 @@ import { LoginComponent } from './components/login/login.component';
     LoginComponent,
   ],
   imports: [
-    BrowserModule, 
+    BrowserModule,
     FormsModule,
     NgbModule.forRoot(),
     CustomFormsModule,
     HttpModule,
     RouterModule.forRoot([
-      {path: '',component: HomeComponent},
-      {path: 'about',component: AboutComponent},
-      {path: 'admin/manage-places/add-place',component: PlaceFormComponent},
-      {path: 'admin/manage-places/add-place/:id', component: PlaceFormComponent},
-      {path: 'admin/manage-places',component: AdminPlaceComponent},
-      {path: 'view-places',component: ViewPlacesComponent},
-      {path: 'login',component: LoginComponent}
-      
+      { path: '', component: HomeComponent },
+      { path: 'about', component: AboutComponent },
+
+      {
+        path: 'admin/manage-places/add-place',
+        component: PlaceFormComponent,
+        canActivate: [AuthGurdService]
+      },
+      {
+        path: 'admin/manage-places/add-place/:id',
+        component: PlaceFormComponent,
+        canActivate: [AuthGurdService]
+      },
+      {
+        path: 'admin/manage-places',
+        component: AdminPlaceComponent,
+        canActivate: [AuthGurdService]
+      },
+      { path: 'view-places', component: ViewPlacesComponent },
+      { path: 'login', component: LoginComponent }
+
 
     ])
   ],
   providers: [
     PlaceService,
-    PlaceCategoryService
+    PlaceCategoryService,
+    AuthService,
+    AuthGurdService
+
   ],
   bootstrap: [AppComponent]
 })
