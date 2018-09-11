@@ -21,6 +21,9 @@ import { ViewPlacesComponent } from './components/view-places/view-places.compon
 import { PlacesFilterComponent } from './components/view-places/places-filter/places-filter.component';
 import { PlaceCardComponent } from './components/place-card/place-card.component';
 import { LoginComponent } from './components/login/login.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { PlaceInfoComponent } from './components/place-info/place-info.component';
+
 
 
 
@@ -36,6 +39,8 @@ import { LoginComponent } from './components/login/login.component';
     PlacesFilterComponent,
     PlaceCardComponent,
     LoginComponent,
+    FooterComponent,
+    PlaceInfoComponent
   ],
   imports: [
     BrowserModule,
@@ -63,7 +68,8 @@ import { LoginComponent } from './components/login/login.component';
         canActivate: [AuthGurdService]
       },
       { path: 'view-places', component: ViewPlacesComponent },
-      { path: 'login', component: LoginComponent }
+      { path: 'login', component: LoginComponent },
+      { path: 'view-places/place-info/:id', component: PlaceInfoComponent }
 
 
     ])

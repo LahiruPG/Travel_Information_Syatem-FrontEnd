@@ -23,7 +23,6 @@ export class ViewPlacesComponent implements OnInit {
   ngOnInit() {
     this.plaveservice.getAll().subscribe(response =>{
       this.places = response.json();
-
       this.route.queryParamMap.subscribe(params =>{
         this.category = params.get('category');
         this.filteredPlaces = (this.category) ?

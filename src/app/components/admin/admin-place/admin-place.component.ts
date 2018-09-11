@@ -9,15 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminPlaceComponent implements OnInit {
   places:Place[];
-  constructor(private placeService: PlaceService) { 
-   
-  }
+  constructor(private placeService: PlaceService) {}
 
   ngOnInit() {
     this.placeService.getAll()
       .subscribe(response =>{
         this.places = response.json();
-        //console.log(response.json());
       });
   }
 

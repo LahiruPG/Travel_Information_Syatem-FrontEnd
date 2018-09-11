@@ -8,9 +8,11 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class PlaceCardComponent implements OnInit {
   @Input('place') place: Place;
-  constructor() { }
+  desc: String="";
+  constructor() {}
 
   ngOnInit() {
+        this.desc=this.place.description.substring(0,250)+"...";
   }
 
 }
