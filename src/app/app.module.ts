@@ -24,6 +24,8 @@ import { LoginComponent } from './components/login/login.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { PlaceInfoComponent } from './components/place-info/place-info.component';
 
+import { AgmCoreModule } from '@agm/core';
+
 
 
 
@@ -70,9 +72,10 @@ import { PlaceInfoComponent } from './components/place-info/place-info.component
       { path: 'view-places', component: ViewPlacesComponent },
       { path: 'login', component: LoginComponent },
       { path: 'view-places/place-info/:id', component: PlaceInfoComponent }
-
-
-    ])
+    ]),
+    AgmCoreModule.forRoot({
+      //apiKey: 'AIzaSyBoeFj1FVnqsa_92I17dvVB3kiHHp6HC-4'
+    })
   ],
   providers: [
     PlaceService,
