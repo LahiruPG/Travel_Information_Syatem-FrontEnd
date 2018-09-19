@@ -7,20 +7,21 @@
   <div class="card-group">
     <!-- image card -->
     <div class="card">
-      <img class="card-img-top" [src]="place.notes" alt="Card image cap">
+      <img class="card-img-top" [src]="place.notes" alt="Card image cap" *ngIf='place.notes'>
       <div class="card-body">
         <h5 class="card-title"></h5>
         <p class="card-text">Category : {{place.type}}</p>
         <p class="card-text">Address : {{place.address}}</p>
-
-        <agm-map [latitude]="+place.latitude" [longitude]="+place.longitude">
-            <agm-marker [latitude]="+place.latitude" [longitude]="+place.longitude"></agm-marker>
-          </agm-map>
         <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
+
+        <div class="embed-responsive embed-responsive-16by9" *ngIf="place.mapLocation">
+          <iframe class="embed-responsive-item" [src]="sanitizer.bypassSecurityTrustResourceUrl(place.mapLocation)"
+            allowfullscreen></iframe>
+        </div>
       </div>
     </div>
 
-  <!-- description card -->
+    <!-- description card -->
     <div class="card">
       <div class="card-body">
         <div class="card-text">
@@ -30,21 +31,23 @@
       </div>
     </div>
   </div>
-  
+
   <!-- Star rating -->
   <div>
     <br>
+    <h2>
+      Rate this place
+    </h2>
+    <a *ngFor="let item of starList; let i=index " (click)="setStar(i)">
+      <i class="fa fa-2x" [ngClass]="{'fa-star-o':item,'fa-star':!item}"></i>
+    </a>
+    <br>
+    Rating :- {{rating}} stars
+    <textarea class="form-control"></textarea>
+    <button class="btn btn-primary">Save</button>
+  </div>
 
-      <h2>
-        Rate this place
-      </h2>
-      <a *ngFor="let item of starList; let i=index " (click)="setStar(i)">
-        <i class="fa fa-2x"  [ngClass]="{'fa-star-o':item,'fa-star':!item}"></i>
-      </a>
-      <br>
-      Rating :- {{rating}} stars
-      <textarea class="form-control" ></textarea>
-      <button class="btn btn-primary">Save</button>
-    </div>
+  <div>
+  </div>
 
 </div>

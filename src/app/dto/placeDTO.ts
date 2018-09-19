@@ -1,12 +1,17 @@
+import { PlaceImage } from "./place-image";
+import { PlaceReview } from "./place-review";
+
 export class PlaceDTO {
-    id: number;
+    id: string;
     name:string;
     type:string;
     address:string;
-    district:string;
-    latitude:number;
-    longitude:number;
     description:string;
+    district:string;
+    town:string;
+    mapLocation:string;
     notes:string;
     status:string;
+    imageUrl:[PlaceImage];
+    review:[PlaceReview];
 }

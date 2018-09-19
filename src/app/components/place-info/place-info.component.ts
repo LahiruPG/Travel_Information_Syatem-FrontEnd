@@ -1,5 +1,7 @@
+import { DomSanitizer } from '@angular/platform-browser';
+import { Places2Service } from './../../service/places2.service';
+import { PlaceDTO } from './../../dto/placeDTO';
 import { ActivatedRoute } from '@angular/router';
-import { PlaceService } from './../../service/place.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -9,26 +11,31 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PlaceInfoComponent implements OnInit {
   id;
-  place = {};
-
-  title = 'Star Rating';
-  starList: boolean[] = [true, true, true, true, true];       // create a list which contains status of 5 stars
+  place: PlaceDTO = new PlaceDTO();
+// star rating
+  starList: boolean[] = [true, true, true, true, true];
   rating: number;
+//star rating end
 
   constructor(
-    private service: PlaceService,
-    private rout: ActivatedRoute
+    private service: Places2Service,
+    private rout: ActivatedRoute,
+    public sanitizer: DomSanitizer
   ) {
     this.id = this.rout.snapshot.paramMap.get('id');
-    if (this.id) this.service.get(this.id).take(1).subscribe(p =>
-      this.place = p.json());
-  }
+    if (this.id) this.service.find(this.id).take(1).subscribe(p =>{
+      this.place = p;
+    });
+
+  } 
 
   ngOnInit() {
+    
   }
 
-
+// star rating
   setStar(data: any) {
+    console.log(this.place);
     this.rating = data + 1;
     for (var i = 0; i <= 4; i++) {
       if (i <= data) {
@@ -39,5 +46,6 @@ export class PlaceInfoComponent implements OnInit {
       }
     }
   }
+//star rating end
 
 }

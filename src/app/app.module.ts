@@ -1,5 +1,6 @@
+import { Places2Service } from './service/places2.service';
 import { AuthGurdService } from './service/auth-gurd.service';
-
+import {HttpClient} from "@angular/common/http";
 import { AuthService } from './service/auth.service';
 import { PlaceCategoryService } from './service/place-category.service';
 import { HttpModule } from '@angular/http';
@@ -10,6 +11,8 @@ import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CustomFormsModule } from 'ng2-validation';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
+import {HttpClientModule} from "@angular/common/http";
 
 import { AppComponent } from './app.component';
 import { TopNavbarComponent } from './components/top-navbar/top-navbar.component';
@@ -23,10 +26,6 @@ import { PlaceCardComponent } from './components/place-card/place-card.component
 import { LoginComponent } from './components/login/login.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { PlaceInfoComponent } from './components/place-info/place-info.component';
-
-import { AgmCoreModule } from '@agm/core';
-
-
 
 
 @NgModule({
@@ -50,6 +49,7 @@ import { AgmCoreModule } from '@agm/core';
     NgbModule.forRoot(),
     CustomFormsModule,
     HttpModule,
+    HttpClientModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent },
       { path: 'about', component: AboutComponent },
@@ -72,17 +72,14 @@ import { AgmCoreModule } from '@agm/core';
       { path: 'view-places', component: ViewPlacesComponent },
       { path: 'login', component: LoginComponent },
       { path: 'view-places/place-info/:id', component: PlaceInfoComponent }
-    ]),
-    AgmCoreModule.forRoot({
-      //apiKey: 'AIzaSyBoeFj1FVnqsa_92I17dvVB3kiHHp6HC-4'
-    })
+    ])
   ],
   providers: [
     PlaceService,
     PlaceCategoryService,
     AuthService,
-    AuthGurdService
-
+    AuthGurdService,
+    Places2Service
   ],
   bootstrap: [AppComponent]
 })
