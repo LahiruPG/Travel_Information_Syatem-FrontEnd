@@ -1,4 +1,4 @@
-import { Place } from './../../dto/place';
+import { PlaceDTO } from '../../dto/place';
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
@@ -7,12 +7,12 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./place-card.component.css']
 })
 export class PlaceCardComponent implements OnInit {
-  @Input('place') place: Place;
-  desc: String="";
-  constructor() {}
+  @Input('place') place: PlaceDTO;
+  desc: String = "null";
+  constructor() { }
 
   ngOnInit() {
-        this.desc=this.place.description.substring(0,250)+"...";
+    this.desc = this.place.description.substring(0, 250) + "...";
   }
 
 }

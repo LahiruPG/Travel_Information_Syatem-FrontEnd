@@ -1,6 +1,4 @@
-import { Places2Service } from './service/places2.service';
 import { AuthGurdService } from './service/auth-gurd.service';
-import {HttpClient} from "@angular/common/http";
 import { AuthService } from './service/auth.service';
 import { PlaceCategoryService } from './service/place-category.service';
 import { HttpModule } from '@angular/http';
@@ -78,8 +76,7 @@ import { PlaceInfoComponent } from './components/place-info/place-info.component
     PlaceService,
     PlaceCategoryService,
     AuthService,
-    AuthGurdService,
-    Places2Service
+    AuthGurdService
   ],
   bootstrap: [AppComponent]
 })

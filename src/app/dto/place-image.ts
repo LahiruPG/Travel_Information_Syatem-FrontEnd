@@ -1,4 +1,4 @@
-export class PlaceImage {
+export class PlaceImageDTO {
     id: string;
     placeId: string;
     url: string;

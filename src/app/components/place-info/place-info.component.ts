@@ -1,6 +1,6 @@
+import { PlaceService } from './../../service/place.service';
 import { DomSanitizer } from '@angular/platform-browser';
-import { Places2Service } from './../../service/places2.service';
-import { PlaceDTO } from './../../dto/placeDTO';
+import { PlaceDTO } from '../../dto/place';
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
@@ -18,7 +18,7 @@ export class PlaceInfoComponent implements OnInit {
 //star rating end
 
   constructor(
-    private service: Places2Service,
+    private service: PlaceService,
     private rout: ActivatedRoute,
     public sanitizer: DomSanitizer
   ) {

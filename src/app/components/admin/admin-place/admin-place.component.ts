@@ -1,4 +1,4 @@
-import { Place } from './../../../dto/place';
+import { PlaceDTO } from '../../../dto/place';
 import { PlaceService } from './../../../service/place.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -8,16 +8,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./admin-place.component.css']
 })
 export class AdminPlaceComponent implements OnInit {
-  places:Place[];
-  constructor(private placeService: PlaceService) {}
+  places: PlaceDTO[] = [];
+
+  constructor(private service: PlaceService) { }
 
   ngOnInit() {
-    this.placeService.getAll()
-      .subscribe(response =>{
-        this.places = response.json();
+    this.service.getAll()
+      .subscribe(response => {
+        this.places = response;
       });
   }
-
-  
-
 }

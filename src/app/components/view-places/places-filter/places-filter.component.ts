@@ -1,3 +1,4 @@
+import { PlaceCategoryDTO } from './../../../dto/place-category';
 import { PlaceCategoryService } from './../../../service/place-category.service';
 import { Component, OnInit, Input } from '@angular/core';
 
@@ -7,14 +8,14 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./places-filter.component.css']
 })
 export class PlacesFilterComponent implements OnInit {
-  pcategoty=[];
+  pcategoty:PlaceCategoryDTO[]=[];
   @Input('category') category;
 
   constructor(private pcategoryservice: PlaceCategoryService) { }
 
   ngOnInit() {
     this.pcategoryservice.getAll().subscribe(response =>{
-      this.pcategoty = response.json();
+      this.pcategoty = response;
       console.log(this.pcategoty);
     });
   }
