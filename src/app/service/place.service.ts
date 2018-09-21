@@ -35,4 +35,22 @@ export class PlaceService {
     return this.http.put(MAIN_URL + URL, post);
   }
 
+  // uploadImage(post) {
+  //   console.log("put Request Image Upload - PlaceService");
+  //   const fd = new FormData();
+  //   fd.append('file', post);
+  //   return this.http.post(MAIN_URL + URL + "/images", fd).subscribe(r => {
+  //     console.log(r);
+  //   });
+  // }
+
+
+  uploadImage(file) {
+    let formData = new FormData();
+    formData.append("file",file,file.name);
+    return this.http.post(MAIN_URL + URL + "/images", formData);
+  }
+
+
+
 }

@@ -42,9 +42,9 @@
         <label for="town">Town</label>
         <input #longitude="ngModel" [(ngModel)]="place.town" name="town" id="town" type="text" class="form-control"
           required>
-          <div class="alert alert-danger" *ngIf="description.touched && description.invalid">
-            Town is requird.
-          </div>
+        <div class="alert alert-danger" *ngIf="description.touched && description.invalid">
+          Town is requird.
+        </div>
       </div>
 
 
@@ -85,20 +85,33 @@
         </div>
       </div>
 
+      <div *ngIf="uplodedImageUrlList" class="card-group mb-5">
+
+          <div class="card" style="width: 18rem;">
+              <h5 class="card-title">Upload Images</h5>
+              <img class="card-img-top mb-3" *ngIf="url" [src]="url" style="width: 8rem;">
+              <div class="">
+                <input #file type="file" (change)="onSelectFile($event)" style="display: none;">
+                <a class="btn btn-primary btn-sm text-white" (click)="file.click()"> Pick File</a>
+                <a class="btn btn-primary btn-sm text-white" (click)="uploadImage()">upload</a>
+              </div>
+            </div>
+
+        <div class="" *ngFor="let  o of uplodedImageUrlList">
+          <img class="rounded card" [src]="o.url" style="width: 8rem;">
+        </div>
+      </div>
+
+
       <div>
         <ngb-alert *ngIf="successMessage" type="success" (close)="successMessage = null">{{ successMessage }}</ngb-alert>
-     </div>
+      </div>
       <button class="btn btn-primary">Save</button>
       <button class="btn btn-primary" routerLink="/admin/manage-places/">Goto List</button>
 
     </form>
 
-    <!-- <form>
-        <div class="form-group">
-          <label for="exampleFormControlFile1">Example file input</label>
-          <input type="file" class="form-control-file" id="exampleFormControlFile1">
-        </div>
-      </form> -->
+
 
   </div>
 

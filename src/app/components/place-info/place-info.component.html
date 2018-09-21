@@ -4,11 +4,25 @@
     <h3>{{place.name}}</h3>
   </div>
 
-  <div class="card border-white">
+
+  <ngb-carousel *ngIf="imageList" >
+      <ng-template ngbSlide *ngFor="let img of imageList" style="width: 500px;">
+        <img class="mx-auto" style="height: 500px;" [src]="img.url" alt="Random first slide">
+      </ng-template>
+    </ngb-carousel>
+
+
+
+
+
+
+
+
+  <!-- <div class="card border-white">
     <img class="card-img-top" [src]="place.notes" alt="Card image cap" *ngIf='place.notes'>
     <div class="card-body">
     </div>
-  </div>
+  </div> -->
 
   <div class="card-group border-secondary">
     <!-- image card -->

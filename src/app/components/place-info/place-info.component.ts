@@ -6,6 +6,7 @@ import { PlaceDTO } from '../../dto/place';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { UserDTO } from '../../dto/user';
+import { PlaceImageDTO } from '../../dto/place-image';
 
 @Component({
     selector: 'place-info',
@@ -19,6 +20,12 @@ export class PlaceInfoComponent implements OnInit {
     reviews: PlaceReviewDTO[] = [];
     addReview: PlaceReviewDTO = new PlaceReviewDTO();
     currentUser: UserDTO = new UserDTO();
+    imageList: PlaceImageDTO[]=[];
+    images = [
+        "https://www.copytrans.net/admin/wp/wp-content/uploads/2015/07/sunrise-on-forest-1920x500.jpg",
+        "https://www.socialprint.com/wp-content/uploads/banner.policies.1920x500.png",
+        "https://www.middleforkwillamette.org/wp-content/uploads/2016/05/DSCN2749-1920x500.jpg"
+      ];
 
     // star rating
     starList: boolean[] = [true, true, true, true, true];
@@ -36,6 +43,7 @@ export class PlaceInfoComponent implements OnInit {
         if (this.id) this.service.find(this.id).take(1).subscribe(p => {
             this.place = p;
             this.reviews = p.review;
+            this.imageList=p.imageUrl;
         });
     }
 

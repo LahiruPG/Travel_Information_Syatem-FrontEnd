@@ -1,3 +1,4 @@
+import { PlaceImageService } from './service/place-image.service';
 import { PlaceReviewService } from './service/place-comment.service';
 import { AuthGurdService } from './service/auth-gurd.service';
 import { AuthService } from './service/auth.service';
@@ -78,7 +79,8 @@ import { PlaceInfoComponent } from './components/place-info/place-info.component
     PlaceCategoryService,
     AuthService,
     PlaceReviewService,
-    AuthGurdService
+    AuthGurdService,
+    PlaceImageService
   ],
   bootstrap: [AppComponent]
 })
