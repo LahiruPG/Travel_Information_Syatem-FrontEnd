@@ -1,4 +1,4 @@
-import { User } from './../../dto/user';
+import { UserDTO } from './../../dto/user';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../service/auth.service';
@@ -10,7 +10,7 @@ import { AuthService } from '../../service/auth.service';
 })
 export class LoginComponent implements OnInit {
   invalidLogin = false;
-  user: User;
+  user: UserDTO;
   constructor(
     private router: Router,
     private authService: AuthService

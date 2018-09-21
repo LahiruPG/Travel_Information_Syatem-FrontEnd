@@ -16,7 +16,6 @@ export class PlacesFilterComponent implements OnInit {
   ngOnInit() {
     this.pcategoryservice.getAll().subscribe(response =>{
       this.pcategoty = response;
-      console.log(this.pcategoty);
     });
   }
 

@@ -4,13 +4,21 @@
     <h3>{{place.name}}</h3>
   </div>
 
-  <div class="card-group">
+  <div class="card border-white">
+    <img class="card-img-top" [src]="place.notes" alt="Card image cap" *ngIf='place.notes'>
+    <div class="card-body">
+    </div>
+  </div>
+
+  <div class="card-group border-secondary">
     <!-- image card -->
-    <div class="card">
-      <img class="card-img-top" [src]="place.notes" alt="Card image cap" *ngIf='place.notes'>
+    <div class="card ">
+      <!-- <img class="card-img-top" [src]="place.notes" alt="Card image cap" *ngIf='place.notes'> -->
       <div class="card-body">
         <h5 class="card-title"></h5>
         <p class="card-text">Category : {{place.type}}</p>
+        <p class="card-text">Town : {{place.town}}</p>
+        <p class="card-text">District : {{place.district}}</p>
         <p class="card-text">Address : {{place.address}}</p>
         <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
 
@@ -33,7 +41,7 @@
   </div>
 
   <!-- Star rating -->
-  <div>
+  <!-- <div>
     <br>
     <h2>
       Rate this place
@@ -45,9 +53,43 @@
     Rating :- {{rating}} stars
     <textarea class="form-control"></textarea>
     <button class="btn btn-primary">Save</button>
-  </div>
+  </div> -->
 
   <div>
-  </div>
+        <div class="comments col-md-9 mt-5" id="comments" >
+          <h3 class="mb-2">Reviews</h3>
+          <!-- comment -->
+          <div class="comment mb-2 row" *ngFor="let r of reviews">
+            <div class="comment-avatar col-md-1 col-sm-2 text-center pr-1">
+              <!-- <a href=""><img class="mx-auto rounded-circle img-fluid" src="http://demos.themes.guide/bodeo/assets/images/users/m102.jpg" alt="avatar"></a> -->
+            </div>
+            <div class="comment-content col-md-11 col-sm-10">
+               
+              <h6 class="comment-meta">
+                <a class=" rounded text-primary">{{r.user.type}}</a>  {{r.user.name}} 
+                <div *ngIf="currentUser.type==='admin' || currentUser.email===r.user.email" (click)="deleteReview(r.id)" class="text-danger ml-2 small btn">Delete this review <span class="fa fa-trash text-danger"></span>
+                  
+                  </div> 
+              </h6>
+              <div class="comment-body">
+                <p>{{r.review}}</p>
+                
+              </div>
+            </div>
+          </div>
+          <!-- /comment -->
+          <div *ngIf="currentUser.email" class="row pt-2">
+            <div class="col-12">
+              <textarea #review="ngModel" [(ngModel)]="addReview.review" name="review" id="review" type="text"
+              class="form-control"  ></textarea>
+              <a class="btn btn-sm btn-primary text-white mt-3" (click)="saveReview()">Post</a>
+            </div>
+          </div>
+          <div *ngIf="!currentUser.email">
+            <p>Login for make review <a class="btn btn-primary text-white" routerLink="/login">Login</a></p>
+          </div>
 
+        </div>
+
+  </div>
 </div>

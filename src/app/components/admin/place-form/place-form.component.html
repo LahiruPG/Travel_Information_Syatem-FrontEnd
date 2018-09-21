@@ -16,7 +16,7 @@
           <option value=""></option>
           <option *ngFor="let c of category" [value]="c.name">{{c.name}} </option>
         </select>
-        <div class="alert alert-danger" *ngIf="type.touched">
+        <div class="alert alert-danger" *ngIf="type.touched && address.invalid">
           Type is requird.
         </div>
       </div>
@@ -28,8 +28,6 @@
           address is requird.
         </div>
       </div>
-
-
 
       <div class="form-group">
         <label for="description">Description</label>
@@ -62,8 +60,8 @@
 
       <div class="form-group">
         <label for="mapLocation">Map Location</label>
-        <input #mapLocation="ngModel" [(ngModel)]="place.mapLocation" name="mapLocation" id="mapLocation" type="text"
-          class="form-control" required>
+        <textarea #mapLocation="ngModel" [(ngModel)]="place.mapLocation" name="mapLocation" id="mapLocation" type="text"
+          class="form-control" required></textarea>
         <div class="alert alert-danger" *ngIf="mapLocation.touched && mapLocation.invalid">
           mapLocation is requird.
         </div>
@@ -94,6 +92,13 @@
       <button class="btn btn-primary" routerLink="/admin/manage-places/">Goto List</button>
 
     </form>
+
+    <!-- <form>
+        <div class="form-group">
+          <label for="exampleFormControlFile1">Example file input</label>
+          <input type="file" class="form-control-file" id="exampleFormControlFile1">
+        </div>
+      </form> -->
 
   </div>
 

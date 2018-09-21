@@ -1,3 +1,4 @@
+import { PlaceReviewService } from './service/place-comment.service';
 import { AuthGurdService } from './service/auth-gurd.service';
 import { AuthService } from './service/auth.service';
 import { PlaceCategoryService } from './service/place-category.service';
@@ -76,6 +77,7 @@ import { PlaceInfoComponent } from './components/place-info/place-info.component
     PlaceService,
     PlaceCategoryService,
     AuthService,
+    PlaceReviewService,
     AuthGurdService
   ],
   bootstrap: [AppComponent]

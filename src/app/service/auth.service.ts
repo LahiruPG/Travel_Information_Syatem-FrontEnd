@@ -2,13 +2,13 @@ import { element } from 'protractor';
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
-import { User } from '../dto/user';
+import { UserDTO } from '../dto/user';
 
 @Injectable()
 export class AuthService {
   MAIN_URL= "http://localhost:8080";
   URL="/api/v1/user/";
-  user: User;
+  user: UserDTO;
   constructor(private http: Http) { }
   getAll(){
     
