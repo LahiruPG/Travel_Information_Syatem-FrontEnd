@@ -1,3 +1,4 @@
+import { AppRoutsModule } from './app.routs.component';
 import { PlaceImageService } from './service/place-image.service';
 import { PlaceReviewService } from './service/place-comment.service';
 import { AuthGurdService } from './service/auth-gurd.service';
@@ -26,6 +27,7 @@ import { PlaceCardComponent } from './components/place-card/place-card.component
 import { LoginComponent } from './components/login/login.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { PlaceInfoComponent } from './components/place-info/place-info.component';
+import { AdminPanelComponent } from './components/admin/admin-panel/admin-panel.component';
 
 
 @NgModule({
@@ -41,7 +43,8 @@ import { PlaceInfoComponent } from './components/place-info/place-info.component
     PlaceCardComponent,
     LoginComponent,
     FooterComponent,
-    PlaceInfoComponent
+    PlaceInfoComponent,
+    AdminPanelComponent
   ],
   imports: [
     BrowserModule,
@@ -50,29 +53,7 @@ import { PlaceInfoComponent } from './components/place-info/place-info.component
     CustomFormsModule,
     HttpModule,
     HttpClientModule,
-    RouterModule.forRoot([
-      { path: '', component: HomeComponent },
-      { path: 'about', component: AboutComponent },
-
-      {
-        path: 'admin/manage-places/add-place',
-        component: PlaceFormComponent,
-        canActivate: [AuthGurdService]
-      },
-      {
-        path: 'admin/manage-places/add-place/:id',
-        component: PlaceFormComponent,
-        canActivate: [AuthGurdService]
-      },
-      {
-        path: 'admin/manage-places',
-        component: AdminPlaceComponent,
-        canActivate: [AuthGurdService]
-      },
-      { path: 'view-places', component: ViewPlacesComponent },
-      { path: 'login', component: LoginComponent },
-      { path: 'view-places/place-info/:id', component: PlaceInfoComponent }
-    ])
+    AppRoutsModule,
   ],
   providers: [
     PlaceService,

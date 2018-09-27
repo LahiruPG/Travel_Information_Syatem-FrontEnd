@@ -16,7 +16,7 @@ export class TopNavbarComponent implements OnInit {
 
   logOut(){
     this.authService.logOut();
-    this.router.navigate(['/']);
+    //this.router.navigate(['/']);
   }
 
 }

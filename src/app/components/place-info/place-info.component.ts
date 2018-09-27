@@ -21,11 +21,6 @@ export class PlaceInfoComponent implements OnInit {
     addReview: PlaceReviewDTO = new PlaceReviewDTO();
     currentUser: UserDTO = new UserDTO();
     imageList: PlaceImageDTO[]=[];
-    images = [
-        "https://www.copytrans.net/admin/wp/wp-content/uploads/2015/07/sunrise-on-forest-1920x500.jpg",
-        "https://www.socialprint.com/wp-content/uploads/banner.policies.1920x500.png",
-        "https://www.middleforkwillamette.org/wp-content/uploads/2016/05/DSCN2749-1920x500.jpg"
-      ];
 
     // star rating
     starList: boolean[] = [true, true, true, true, true];

@@ -29,8 +29,7 @@
         <a ngbDropdownToggle class="nav-link dropdown-toggle" id="dropdown01" data-toggle="dropdown" aria-haspopup="true"
           aria-expanded="false">{{authService.getUserName()}}</a>
         <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="dropdown01">
-          <a *ngIf="authService.isAdmin()" class="dropdown-item" routerLink="admin/manage-places">Manage Places</a>
-          <a *ngIf="authService.isAdmin()" class="dropdown-item">Manage Hotels</a>
+          <a *ngIf="authService.isAdmin()" class="dropdown-item" routerLink="admin/admin-panel">Admin panel</a>
           <a class="dropdown-item" (click)="logOut()">Log Out</a>
         </div>
       </li>
