@@ -4,7 +4,7 @@
 
       <div class="form-group">
         <label for="name">Title</label>
-        <input #name="ngModel" [(ngModel)]="place.name" name="name" id="name" type="text" class="form-control" required>
+        <input #name="ngModel" [(ngModel)]="place.name" name="name" id="name" type="text" class="form-control" style="widows: auto;" required>
         <div class="alert alert-danger" *ngIf="name.touched && name.invalid">
           Title is requird
         </div>

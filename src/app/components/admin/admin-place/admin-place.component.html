@@ -6,15 +6,19 @@
         <table class="table">
             <thead>
                 <tr>
+                    <th>Type</th>
                     <th>Title</th>
                     <th>Address</th>
+                    <th>District</th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let p of places">
+                    <td>{{p.type}}</td>
                     <td>{{p.name}}</td>
                     <td>{{p.address}}</td>
+                    <td>{{p.district}}</td>
                     <td>
                         <a [routerLink]="['/admin/admin-panel/manage-places/add-place/', p.id]">Edit</a>
                     </td>

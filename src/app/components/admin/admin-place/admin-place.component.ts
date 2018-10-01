@@ -9,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminPlaceComponent implements OnInit {
   places: PlaceDTO[] = [];
-
+p:PlaceDTO;
   constructor(private service: PlaceService) { }
 
   ngOnInit() {

@@ -1,3 +1,4 @@
+import { ManagePlaceCategoryComponent } from './components/admin/manage-place-category/manage-place-category.component';
 import { AdminPanelComponent } from './components/admin/admin-panel/admin-panel.component';
 import { PlaceInfoComponent } from './components/place-info/place-info.component';
 import { LoginComponent } from './components/login/login.component';
@@ -25,7 +26,8 @@ const appRoutes: Routes = [
         children: [
             {path: 'manage-places',component: AdminPlaceComponent},
             {path: 'manage-places/add-place',component: PlaceFormComponent},
-            {path: 'manage-places/add-place/:id',component: PlaceFormComponent}
+            {path: 'manage-places/add-place/:id',component: PlaceFormComponent},
+            {path: 'manage-places-category',component: ManagePlaceCategoryComponent}
         ]
     },
     { path: 'view-places', component: ViewPlacesComponent },

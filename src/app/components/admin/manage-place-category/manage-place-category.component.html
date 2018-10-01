@@ -1,0 +1,38 @@
+<p>
+  manage-place-category works!
+</p>
+<ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0">
+  <ngb-panel title="Simple">
+    <ng-template ngbPanelContent>
+
+
+     <!-- <div class="card card-signin my-5" style="width: 500px;"> -->
+        <div class="card-body">
+          <h5 class="card-title text-center">Sign In</h5>
+          <form class="form-signin" #f="ngForm" (ngSubmit)="save(f.value)">
+            <div class="form-group">
+              <label for="exampleInputEmail1">Email address</label>
+              <input ngModel name="email" type="text" class="form-control" placeholder="Enter email">
+              <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+            </div>
+            <div class="form-group">
+              <label for="exampleInputPassword1">Password</label>
+              <input ngModel name="password" type="password" class="form-control" placeholder="Password">
+              <input ngModel name="type" type="text" class="invisible" >
+              <input ngModel name="name" type="text" class="invisible" >
+            </div>
+            <!-- <div class="custom-control custom-checkbox mb-3">
+              <input type="checkbox" class="custom-control-input" id="customCheck1">
+              <label class="custom-control-label" for="customCheck1">Remember password</label>
+            </div> -->
+            <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Sign in</button>
+            <hr class="my-4">
+
+          </form>
+        </div>
+      <!-- </div> -->
+
+
+    </ng-template>
+  </ngb-panel>
+</ngb-accordion>

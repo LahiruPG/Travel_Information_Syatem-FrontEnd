@@ -1,11 +1,11 @@
 import { element } from 'protractor';
-import { Injectable } from '@angular/core';
+import { Injectable, OnDestroy } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { UserDTO } from '../dto/user';
 
 @Injectable()
-export class AuthService {
+export class AuthService{
   MAIN_URL= "http://localhost:8080";
   URL="/api/v1/user/";
   user: UserDTO;
@@ -17,7 +17,6 @@ export class AuthService {
     console.log("login post request");
     return this.http.post(this.MAIN_URL+this.URL+'user',values)
     .map(response => { 
-
       this.user = response.json();
       console.log(response.json());
       if(this.user.email){

@@ -7,10 +7,10 @@
   <div class="collapse navbar-collapse" id="navbarsExampleDefault">
 
     <ul class="navbar-nav mr-auto" style="margin-left: 50px">
-      <li class="nav-item active">
+      <li class="nav-item">
         <a class="nav-link" routerLink="/">Home </a>
       </li>
-      <li class="nav-item active">
+      <li class="nav-item">
         <a class="nav-link" routerLink="/view-places">Places</a>
       </li>
       <li class="nav-item">
@@ -25,15 +25,24 @@
       <li class="nav-item">
         <a *ngIf="!authService.isLoggedIn()" class="nav-link" routerLink="/login">Sign Up</a>
       </li>
-      <li *ngIf="authService.isLoggedIn()" ngbDropdown class="nav-item dropdown mr">
-        <a ngbDropdownToggle class="nav-link dropdown-toggle" id="dropdown01" data-toggle="dropdown" aria-haspopup="true"
-          aria-expanded="false">{{authService.getUserName()}}</a>
-        <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="dropdown01">
-          <a *ngIf="authService.isAdmin()" class="dropdown-item" routerLink="admin/admin-panel">Admin panel</a>
-          <a class="dropdown-item" (click)="logOut()">Log Out</a>
-        </div>
+
+
+      <li class="nav-item">
+        <a *ngIf="authService.isLoggedIn()" class="nav-link">{{authService.getUserName()}}</a>
       </li>
+      <li class="nav-item">
+        <a *ngIf="authService.isUser()" class="nav-link">Dashbord</a>
+      </li>
+      <li class="nav-item">
+        <a *ngIf="authService.isAdmin()" class="nav-link " routerLink="admin/admin-panel">Admin Panal</a>
+      </li>
+      <li class="nav-item">
+        <a *ngIf="authService.isLoggedIn()" class="nav-link btn" (click)="logOut()">LogOut</a>
+      </li>
+
     </ul>
-    
+
   </div>
+
 </nav>
+

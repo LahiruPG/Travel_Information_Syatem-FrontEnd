@@ -4,13 +4,14 @@
       <div class="list-group" #p>
         <a  
         class=" mt-3 list-group-item list-group-item-action"  
-        [class.active]="!category"
+        [class.active]=""
         routerLink="/admin/admin-panel/manage-places"
         >Manage Places</a>
-        <a  
+        <a
         class="list-group-item list-group-item-action mt-2 rounded"  
-        [class.active]="!category"
-        routerLink="/admin/admin-panel/manage-places"
+        [class.active]=""
+        routerLink="/admin/admin-panel/manage-places-category"
+        (click)="select=true"
         >Manage Place Category</a>
         <!-- <a 
         class="list-group-item list-group-item-action" 
@@ -19,7 +20,7 @@
       </div>
       </div>
   </div>
-  <div class=" ml-5 col-md-9">
+  <div class="ml-5 col-md-9">
     <div class="row">
       <router-outlet></router-outlet>
     </div>
