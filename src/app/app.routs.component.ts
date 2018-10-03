@@ -11,13 +11,12 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { NgModule } from '@angular/core';
 import { ViewPlacesComponent } from './components/view-places/view-places.component';
+import { SignupComponent } from './components/signup/signup.component';
 
 
 const appRoutes: Routes = [
     { path: '', component: HomeComponent },
     { path: 'about', component: AboutComponent },
-
-
 
     {
         path: 'admin/admin-panel',
@@ -31,6 +30,7 @@ const appRoutes: Routes = [
         ]
     },
     { path: 'view-places', component: ViewPlacesComponent },
+    { path: 'signup', component: SignupComponent },
     { path: 'login', component: LoginComponent },
     { path: 'view-places/place-info/:id', component: PlaceInfoComponent },
 

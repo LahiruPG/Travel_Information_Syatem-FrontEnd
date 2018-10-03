@@ -10,7 +10,7 @@ import { AuthService } from '../../service/auth.service';
 })
 export class LoginComponent implements OnInit {
   invalidLogin = false;
-  user: UserDTO;
+  user: UserDTO = new UserDTO();
   constructor(
     private router: Router,
     private authService: AuthService
@@ -20,15 +20,22 @@ export class LoginComponent implements OnInit {
   }
 
   save(values) {
-    this.authService.logIn(values)
+    this.authService.logIn(this.user)
       .subscribe(result => {
-        if (result)
+        if (result) {
+          this.invalidLogin = false;
           this.router.navigate(['/']);
-        else
+          return;
+        }
+        else {
           this.invalidLogin = true;
+          alert("Invalide user name or password");
+          console.log(this.invalidLogin);
+          return;
+        }
+
       })
   }
 
-  
-  
+
 }

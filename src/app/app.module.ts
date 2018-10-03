@@ -8,11 +8,9 @@ import { HttpModule } from '@angular/http';
 import { PlaceService } from './service/place.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CustomFormsModule } from 'ng2-validation';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
 import {HttpClientModule} from "@angular/common/http";
 
 import { AppComponent } from './app.component';
@@ -53,8 +51,8 @@ import { SignupComponent } from './components/signup/signup.component';
   imports: [
     BrowserModule,
     FormsModule,
-    NgbModule.forRoot(),
     CustomFormsModule,
+    NgbModule.forRoot(),
     HttpModule,
     HttpClientModule,
     AppRoutsModule,

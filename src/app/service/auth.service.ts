@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { element } from 'protractor';
 import { Injectable, OnDestroy } from '@angular/core';
 import { Http } from '@angular/http';
@@ -8,17 +9,18 @@ import { UserDTO } from '../dto/user';
 export class AuthService{
   MAIN_URL= "http://localhost:8080";
   URL="/api/v1/user/";
-  user: UserDTO;
-  constructor(private http: Http) { }
-  getAll(){
-    
+  user: UserDTO =new UserDTO();
+  constructor(private http: HttpClient) { }
+  Register(user: UserDTO){
+    this.http.post<boolean>(this.MAIN_URL+this.URL,user).subscribe(result=>{
+      console.log(result);
+    });
   }
-  logIn(values){
+  logIn(values:UserDTO){
     console.log("login post request");
-    return this.http.post(this.MAIN_URL+this.URL+'user',values)
+    return this.http.post<UserDTO>(this.MAIN_URL+this.URL+'login',values)
     .map(response => { 
-      this.user = response.json();
-      console.log(response.json());
+      this.user = response;
       if(this.user.email){
         localStorage.clear();
         localStorage.setItem('email',this.user.email);
