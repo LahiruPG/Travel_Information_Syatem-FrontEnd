@@ -89,18 +89,15 @@
       <div *ngIf="uplodedImageUrlList" class="card-group mb-5">
 
         <div class="card" style="width: 18rem;">
-          <h5 class="card-title">Upload Images</h5>
+          <label for="status">Upload Photos</label>
           <img class="card-img-top mb-3" *ngIf="url" [src]="url" style="width: 8rem;">
           <div class="">
             <input #file type="file" (change)="onSelectFile($event)" style="display: none;">
-            <a class="btn btn-primary btn-sm text-white" (click)="file.click()"> Pick File</a>
-            <a class="btn btn-primary btn-sm text-white" (click)="uploadImage()">upload</a>
+            <a class="btn btn btn-secondary btn-sm text-white" (click)="file.click()"> Pick Photo</a>
+            <a class="btn btn btn-secondary btn-sm text-white" (click)="uploadImage()">upload</a>
           </div>
         </div>
-
-        <div class="" *ngFor="let  o of uplodedImageUrlList">
-          <img class="rounded card" [src]="o.url" style="width: 8rem;">
-        </div>
+        
       </div>
 
 
@@ -111,13 +108,10 @@
       <button class="btn btn-primary" routerLink="/admin/admin-panel/manage-places/">Goto List</button>
 
     </form>
-
-
-
   </div>
 
   <div class="col-md-4">
-    <div class="card " style="width: 300;">
+    <div class="card ">
       <div *ngIf="place.notes">
         <img class="card-img-top" [src]="place.notes" *ngIf="place.notes">
       </div>
@@ -132,5 +126,11 @@
         <p class="card-text">{{place.status}}</p>
       </div>
     </div>
+    <div class="row">
+      <div class="col-md-4" *ngFor="let  o of uplodedImageUrlList">
+        <img class="rounded card" [src]="o.url" style="width: 10rem;">
+      </div>
+    </div>
+
   </div>
 </div>
