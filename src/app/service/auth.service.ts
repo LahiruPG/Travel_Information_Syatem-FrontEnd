@@ -11,10 +11,8 @@ export class AuthService{
   URL="/api/v1/user/";
   user: UserDTO =new UserDTO();
   constructor(private http: HttpClient) { }
-  Register(user: UserDTO){
-    this.http.post<boolean>(this.MAIN_URL+this.URL,user).subscribe(result=>{
-      console.log(result);
-    });
+  signup(user: UserDTO){
+   return this.http.post<boolean>(this.MAIN_URL+this.URL,user);
   }
   logIn(values:UserDTO){
     console.log("login post request");

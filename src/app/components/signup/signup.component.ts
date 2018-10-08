@@ -11,6 +11,8 @@ export class SignupComponent implements OnInit {
   user: UserDTO = new UserDTO();
   password1: string = "";
   password2: string = "";
+  isEmail: boolean = true;
+  success: boolean = false;
 
   constructor(private service: AuthService) { }
 
@@ -18,13 +20,16 @@ export class SignupComponent implements OnInit {
   }
 
   regester() {
-    if (this.checkPassword()) {
+    if (this.checkPassword() && this.isEmail && this.user.name && this.user.email) {
       this.user.password = this.password2;
-      this.user.type="user";
-      console.log(this.user);
-this.service.Register(this.user);
-    }else{
-      alert("Somethig worng please try later")
+      this.user.type = "user";
+      this.service.signup(this.user).subscribe(res => {
+        this.success = true;
+        this.service.logIn(this.user).subscribe(res=>{});
+      });
+      return;
+    } else {
+      alert("Please check information again")
     }
   }
 
@@ -35,6 +40,11 @@ this.service.Register(this.user);
     } else {
       return false;
     }
+  }
+
+  checkEmail(emil: string) {
+    let regexp = new RegExp(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
+    this.isEmail = regexp.test(emil);
   }
 
 }

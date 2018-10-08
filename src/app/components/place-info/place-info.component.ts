@@ -38,7 +38,7 @@ export class PlaceInfoComponent implements OnInit {
         if (this.id) this.service.find(this.id).take(1).subscribe(p => {
             this.place = p;
             this.reviews = p.review;
-            this.imageList=p.imageUrl;
+            // this.imageList=p.imageUrl;
         });
     }
 
@@ -62,7 +62,7 @@ export class PlaceInfoComponent implements OnInit {
 
     saveReview() {
         this.addReview.placeId = this.place.id;
-        this.addReview.userEmail = localStorage.getItem('email');
+        this.addReview.user = this.currentUser;
         this.addReview.starCount = this.rating + "";
         console.log(this.addReview)
         this.reviewService.save(this.addReview).subscribe(result => {

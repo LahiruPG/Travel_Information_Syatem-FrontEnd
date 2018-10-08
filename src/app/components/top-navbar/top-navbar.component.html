@@ -31,7 +31,7 @@
         <a *ngIf="authService.isLoggedIn()" class="nav-link">{{authService.getUserName()}}</a>
       </li>
       <li class="nav-item">
-        <a *ngIf="authService.isUser()" class="nav-link">Dashbord</a>
+        <a *ngIf="authService.isUser()" class="nav-link" routerLink="user/dashbord" >Dashbord</a>
       </li>
       <li class="nav-item">
         <a *ngIf="authService.isAdmin()" class="nav-link " routerLink="admin/admin-panel">Admin Panal</a>

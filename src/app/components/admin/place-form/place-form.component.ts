@@ -1,5 +1,4 @@
 import { PlaceImageService } from './../../../service/place-image.service';
-import { DomSanitizer } from '@angular/platform-browser';
 import { PlaceCategoryDTO } from './../../../dto/place-category';
 import { PlaceService } from './../../../service/place.service';
 import { Component, OnInit } from '@angular/core';
@@ -18,6 +17,7 @@ import { PlaceImageDTO } from '../../../dto/place-image';
 })
 export class PlaceFormComponent implements OnInit {
   place: PlaceDTO = new PlaceDTO();
+  userType:string="";
   id;
   category:PlaceCategoryDTO[]=[];
   url;
@@ -36,25 +36,33 @@ export class PlaceFormComponent implements OnInit {
     private router: Router,
     public imageService: PlaceImageService
   ) {
+    this.userType = localStorage.getItem('type');
+    console.log(this.userType);
     this.id = this.rout.snapshot.paramMap.get('id');
     if (this.id) this.service.find(this.id).take(1).subscribe(p => this.place = p);
   }
 
   ngOnInit() {
+   
     this.InitAlert();
     this.pcategory.getAll().subscribe(pc => {
       this.category = pc;
     });
+   
   }
 
   save(post) {
+    if(this.userType='user'){
+      this.place.status='request';
+    }
+
     if (this.id) this.service.update(this.place).subscribe(asd =>{
-      this.router.navigate(['/admin/manage-places/']);
+      this.router.navigate(['/admin/admin-panel/manage-places']);
       console.log(asd);
       this.changeSuccessMessage();
     });
     else this.service.save(this.place).subscribe(asd =>{
-      this.router.navigate(['/admin/manage-places/']);
+      this.router.navigate(['/admin/admin-panel/manage-places']);
       console.log(asd);
       this.changeSuccessMessage();
     });  

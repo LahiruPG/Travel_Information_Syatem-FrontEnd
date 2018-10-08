@@ -28,6 +28,7 @@ import { PlaceInfoComponent } from './components/place-info/place-info.component
 import { AdminPanelComponent } from './components/admin/admin-panel/admin-panel.component';
 import { ManagePlaceCategoryComponent } from './components/admin/manage-place-category/manage-place-category.component';
 import { SignupComponent } from './components/signup/signup.component';
+import { UserPanelComponent } from './components/user-panel/user-panel.component';
 
 
 @NgModule({
@@ -46,7 +47,8 @@ import { SignupComponent } from './components/signup/signup.component';
     PlaceInfoComponent,
     AdminPanelComponent,
     ManagePlaceCategoryComponent,
-    SignupComponent
+    SignupComponent,
+    UserPanelComponent
   ],
   imports: [
     BrowserModule,

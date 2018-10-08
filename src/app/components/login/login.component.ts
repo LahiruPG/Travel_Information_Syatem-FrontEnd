@@ -29,12 +29,15 @@ export class LoginComponent implements OnInit {
         }
         else {
           this.invalidLogin = true;
-          alert("Invalide user name or password");
-          console.log(this.invalidLogin);
+          // alert("Invalide user name or password");
           return;
         }
 
       })
+  }
+
+  errorMsg(){
+    this.invalidLogin=false;
   }
 
 

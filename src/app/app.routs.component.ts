@@ -12,6 +12,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { ViewPlacesComponent } from './components/view-places/view-places.component';
 import { SignupComponent } from './components/signup/signup.component';
+import { UserPanelComponent } from './components/user-panel/user-panel.component';
 
 
 const appRoutes: Routes = [
@@ -23,10 +24,17 @@ const appRoutes: Routes = [
         component: AdminPanelComponent,
         canActivate: [AuthGurdService],
         children: [
-            {path: 'manage-places',component: AdminPlaceComponent},
-            {path: 'manage-places/add-place',component: PlaceFormComponent},
-            {path: 'manage-places/add-place/:id',component: PlaceFormComponent},
-            {path: 'manage-places-category',component: ManagePlaceCategoryComponent}
+            { path: 'manage-places', component: AdminPlaceComponent },
+            { path: 'manage-places/add-place', component: PlaceFormComponent },
+            { path: 'manage-places/add-place/:id', component: PlaceFormComponent },
+            { path: 'manage-places-category', component: ManagePlaceCategoryComponent }
+        ]
+    },
+    {
+        path: 'user/dashbord',
+        component: UserPanelComponent,
+        children: [
+            { path: 'add-place', component: PlaceFormComponent }
         ]
     },
     { path: 'view-places', component: ViewPlacesComponent },

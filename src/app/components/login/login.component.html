@@ -8,15 +8,15 @@
             <form class="form-signin" #f="ngForm" (ngSubmit)="save(f.value)">
               <div class="form-group">
                 <label for="exampleInputEmail1">Email address</label>
-                <input [(ngModel)]="user.email" name="email" type="text" class="form-control" placeholder="Enter email">
+                <input (click)="errorMsg()" [(ngModel)]="user.email" name="email" type="text" class="form-control" placeholder="Enter email">
                 <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
               </div>
               <div class="form-group">
                 <label for="exampleInputPassword1">Password</label>
-                <input [(ngModel)]="user.password" name="password" type="password" class="form-control" placeholder="Password">
+                <input (click)="errorMsg()" [(ngModel)]="user.password" name="password" type="password" class="form-control" placeholder="Password">
               </div>
               <div *ngIf="invalidLogin" class="alert alert-danger" role="alert">
-                Passwords and user name not match, check it out!
+                Invalid user name or password, check it out!
               </div>
               <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Sign in</button>
               <hr class="my-4">
