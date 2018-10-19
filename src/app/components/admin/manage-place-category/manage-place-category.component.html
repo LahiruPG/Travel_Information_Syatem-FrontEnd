@@ -1,136 +1,30 @@
 <div class="row">
   <div class=" col-md-5 ">
-    <form #f="ngForm" (ngSubmit)="save(f.value)">
+    <form #f="ngForm" (ngSubmit)="save()">
 
       <div class="form-group">
-        <label for="name">Title</label>
-        <input #name="ngModel" [(ngModel)]="place.name" name="name" id="name" type="text" class="form-control" style="widows: auto;"
-          required>
-        <div class="alert alert-danger" *ngIf="name.touched && name.invalid">
-          Title is requird
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="type">Type</label>
-        <select #type="ngModel" [(ngModel)]="place.type" name="type" id="type" type="text" class="form-control"
-          required>
-          <option value=""></option>
-          <option *ngFor="let c of category" [value]="c.name">{{c.name}} </option>
-        </select>
-        <div class="alert alert-danger" *ngIf="type.touched && address.invalid">
-          Type is requird.
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="address">Address</label>
-        <input #address="ngModel" [(ngModel)]="place.address" name="address" id="address" type="text" class="form-control"
-          required>
-        <div class="alert alert-danger" *ngIf="address.touched && address.invalid">
-          address is requird.
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label for="description">Description</label>
-        <textarea #description="ngModel" [(ngModel)]="place.description" name="description" id="description" type="text"
-          class="form-control" required></textarea>
-        <div class="alert alert-danger" *ngIf="description.touched && description.invalid">
-          description is requird.
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label for="town">Town</label>
-        <input #longitude="ngModel" [(ngModel)]="place.town" name="town" id="town" type="text" class="form-control"
-          required>
-        <div class="alert alert-danger" *ngIf="description.touched && description.invalid">
-          Town is requird.
-        </div>
-      </div>
-
-
-      <div class="form-group">
-        <label for="district">District</label>
-        <input #district="ngModel" [(ngModel)]="place.district" name="district" id="district" type="text" class="form-control"
-          required>
-        <div class="alert alert-danger" *ngIf="district.touched && district.invalid">
-          district is requird.
-        </div>
-      </div>
-
-
-      <div *ngIf="userType=='admin'" class="form-group">
-        <label for="mapLocation">Map Location</label>
-        <textarea #mapLocation="ngModel" [(ngModel)]="place.mapLocation" name="mapLocation" id="mapLocation" type="text"
-          class="form-control" required></textarea>
-        <div class="alert alert-danger" *ngIf="mapLocation.touched && mapLocation.invalid">
-          mapLocation is requird.
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label for="notes">Notes</label>
-        <input #notes="ngModel" [(ngModel)]="place.notes" name="notes" id="notes" type="text" class="form-control"
-          required>
-        <div class="alert alert-danger" *ngIf="notes.touched && notes.invalid">
-          Notes is requird.
-        </div>
-      </div>
-
-      <div *ngIf="userType=='admin'" class="form-group">
-        <label for="status">Status</label>
-        <input #status="ngModel" [(ngModel)]="place.status" name="status" id="status" type="text" class="form-control"
-          required>
-        <div class="alert alert-danger" *ngIf="status.touched && status.invalid">
-          status is requird.
-        </div>
-      </div>
-
-      <div *ngIf="uplodedImageUrlList" class="card-group mb-5">
-
-        <div class="card" style="width: 18rem;">
-          <h5 class="card-title">Upload Images</h5>
-          <img class="card-img-top mb-3" *ngIf="url" [src]="url" style="width: 8rem;">
-          <div class="">
-            <input #file type="file" (change)="onSelectFile($event)" style="display: none;">
-            <a class="btn btn-primary btn-sm text-white" (click)="file.click()"> Pick File</a>
-            <a class="btn btn-primary btn-sm text-white" (click)="uploadImage()">upload</a>
-          </div>
-        </div>
-
-        <div class="" *ngFor="let  o of uplodedImageUrlList">
-          <img class="rounded card" [src]="o.url" style="width: 8rem;">
-        </div>
-      </div>
-
-
-      <div>
-        <ngb-alert *ngIf="successMessage" type="success" (close)="successMessage = null">{{ successMessage }}</ngb-alert>
+        <label for="name">Add Category</label>
+        <input [(ngModel)]="category.name" name="category" id="category" type="text" class="form-control" style="widows: auto;">
       </div>
       <button class="btn btn-primary">Save</button>
-      <button class="btn btn-primary" routerLink="/admin/admin-panel/manage-places/">Goto List</button>
-
     </form>
-
-
-
   </div>
 
   <div class="col-md-4">
-    <div class="card " style="width: 300;">
-      <div *ngIf="place.notes">
-        <img class="card-img-top" [src]="place.notes" *ngIf="place.notes">
-      </div>
-      <div class="card-body">
-        <h3 class="card-title">{{place.name}}</h3>
-        <p class="card-text">{{place.type}}</p>
-        <p class="card-text">{{place.address}}</p>
-        <p class="card-text">{{place.description}}</p>
-        <p class="card-text">{{place.mapLocation}}</p>
-        <p class="card-text">{{place.longitude}}</p>
-        <p class="card-text">{{place.notes}}</p>
-        <p class="card-text">{{place.status}}</p>
-      </div>
-    </div>
+    <table class="table">
+      <tr>
+        <th>name</th>
+        <th></th>
+      </tr>
+      <tr *ngFor="let p of categoryList">
+        <td>{{p.name}}</td>
+        <td><a class="btn btn-sm btn-danger text-white" (click)="delete(p.id)">Remove</a></td>
+      </tr>
+    </table>
   </div>
 </div>
+
+
+
+
+

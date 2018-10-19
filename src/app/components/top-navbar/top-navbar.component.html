@@ -20,10 +20,10 @@
 
     <ul class="navbar-nav" style="margin-right: 150px">
       <li class="nav-item">
-        <a *ngIf="!authService.isLoggedIn()" class="nav-link" routerLink="/login">Sign In</a>
+        <a *ngIf="!authService.isLoggedIn()" class="nav-link" (click)="logIn.show()">Sign In</a>
       </li>
       <li class="nav-item">
-        <a *ngIf="!authService.isLoggedIn()" class="nav-link" routerLink="/signup">Sign Up</a>
+        <a *ngIf="!authService.isLoggedIn()" class="nav-link" routerLink="signup">Sign Up</a>
       </li>
 
 
@@ -46,3 +46,34 @@
 
 </nav>
 
+<div class="modal fade" bsModal #logIn="bs-modal" [config]="{backdrop: 'static'}"
+     tabindex="-1" role="dialog" aria-labelledby="dialog-static-name">
+  <div class="modal-dialog second">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="dialog-static-name" class="modal-title pull-left">Static modal</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="logIn.hide()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <app-login [close]="logIn"></app-login>
+      
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" bsModal #signup="bs-modal" [config]="{backdrop: 'static'}"
+     tabindex="-1" role="dialog" aria-labelledby="dialog-static-name">
+  <div class="modal-dialog second">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="dialog-static-name" class="modal-title pull-left">Static modal</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="signup.hide()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <app-signup [close]="signup"></app-signup>
+      
+    </div>
+  </div>
+</div>

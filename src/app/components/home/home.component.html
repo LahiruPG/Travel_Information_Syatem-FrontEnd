@@ -1,76 +1,165 @@
-<div class="container-fluid">
+<carousel>
+    <slide *ngFor="let img of images">
+      <img [src]="img"  style="display: block; width: 100%;">
+    </slide>
+  </carousel>
+
+  <!-- <div class="container">
     <div class="row">
-        <div class="col">
-            <ngb-carousel *ngIf="images">
-                <ng-template ngbSlide>
-                  <img [src]="images[0]" alt="Random first slide">
-                  <div class="carousel-caption">
-                    <h3>First slide label</h3>
-                    <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-                  </div>
-                </ng-template>
-                <ng-template ngbSlide>
-                  <img [src]="images[1]" alt="Random second slide">
-                  <div class="carousel-caption">
-                    <h3>Second slide label</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                  </div>
-                </ng-template>
-                <ng-template ngbSlide>
-                  <img [src]="images[2]" alt="Random third slide">
-                  <div class="carousel-caption">
-                    <h3>Third slide label</h3>
-                    <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-                  </div>
-                </ng-template>
-              </ngb-carousel>
-        </div>
+
+      <div class="card" style="width: auto;">
+          <div class="card-body">
+              <img class="card-img-top"  src="https://www.prestigetravelae.com/images/home/adventures.jpg">
+                  <h3 class="card-title">Active Adventures</h3>
+                  <p class="card-text">Whatever your travel style is; Active, Biking, Comfort, Expedition, Family Vacations or more, let us do the planning.</p>
+                  <p class="more trans-four"><span>more</span><i class="fa fa-angle-right"></i></p>
+          </div>
       </div>
-</div>
-
-<!-- <div class="row">
-
-  <div class="card" style="width: 40rem;">
-      <div class="card-body">
-          <img class="card-img-top"  src="https://www.prestigetravelae.com/images/home/adventures.jpg">
-              <h3 class="card-title">Active Adventures</h3>
-              <p class="card-text">Whatever your travel style is; Active, Biking, Comfort, Expedition, Family Vacations or more, let us do the planning.</p>
-              <p class="more trans-four"><span>more</span><i class="fa fa-angle-right"></i></p>
+    
+    
+      <div class="card" style="width: 40rem;">
+          <div class="feature">
+              <img class="card-img-top"  src="https://www.prestigetravelae.com/images/home/family.jpg">
+                  <h3 class="card-title">Family Travel</h3>
+                  <p class="card-text">Benefit from our firsthand experience and insider connections to take your family on a vacation of a lifetime.</p>
+                  <p class="more trans-four"><span>more</span><i class="fa fa-angle-right"></i></p>
+          </div>
       </div>
-  </div>
-
-
-  <div class="card" style="width: 40rem;">
-      <div class="feature">
-          <img class="card-img-top"  src="https://www.prestigetravelae.com/images/home/family.jpg">
-              <h3 class="card-title">Family Travel</h3>
-              <p class="card-text">Benefit from our firsthand experience and insider connections to take your family on a vacation of a lifetime.</p>
-              <p class="more trans-four"><span>more</span><i class="fa fa-angle-right"></i></p>
+    
+    
+     <div class="card" style="width: 40rem;">
+          <div class="feature">
+              <img class="card-img-top"  src="https://www.prestigetravelae.com/images/home/world.jpg">
+                  <h3 class="card-title">World Destinations</h3>
+                  <p class="card-text">Discover the World! Find destination content, videos and vacation offers Worldwide!</p>
+                  <p class="more trans-four"><span>more</span><i class="fa fa-angle-right"></i></p>
+          </div>
       </div>
-  </div>
-
-
- <div class="card" style="width: 40rem;">
-      <div class="feature">
-          <img class="card-img-top"  src="https://www.prestigetravelae.com/images/home/world.jpg">
-              <h3 class="card-title">World Destinations</h3>
-              <p class="card-text">Discover the World! Find destination content, videos and vacation offers Worldwide!</p>
-              <p class="more trans-four"><span>more</span><i class="fa fa-angle-right"></i></p>
+    
+    
+      <div class="card" style="width: 40rem;">
+          <div class="feature">
+              <img class="card-img-top"  src="https://www.prestigetravelae.com/images/home/river.jpg">
+                  <h3 class="card-title">River Cruises</h3>
+                  <p class="card-text">Experience a vacation of a lifetime with cityscapes and countryside’s that will take your breath away. Indulge in gourmet meals and luxurious accommodations.</p>
+                  <p class="more trans-four"><span>more</span><i class="fa fa-angle-right"></i></p>
+          </div>
       </div>
-  </div>
-
-
-  <div class="card" style="width: 40rem;">
-      <div class="feature">
-          <img class="card-img-top"  src="https://www.prestigetravelae.com/images/home/river.jpg">
-              <h3 class="card-title">River Cruises</h3>
-              <p class="card-text">Experience a vacation of a lifetime with cityscapes and countryside’s that will take your breath away. Indulge in gourmet meals and luxurious accommodations.</p>
-              <p class="more trans-four"><span>more</span><i class="fa fa-angle-right"></i></p>
-      </div>
-  </div>
-
-
+    
+    
+      </div> 
+    
   </div> -->
 
+  <main role="main" class="container">
+    <div class="row">
+      <div class="col-md-8 blog-main">
+        <h3 class="pb-3 mb-4 font-italic border-bottom">
+          From the Firehose
+        </h3>
+
+        <div class="blog-post">
+          <h2 class="blog-post-title">Active Adventures</h2>
+          <p class="blog-post-meta">January 1, 2014 by <a href="#">Mark</a></p>
+
+          <p>This blog post shows a few different types of content that's supported and styled with Bootstrap. Basic typography, images, and code are all supported.</p>
+          <hr>
+          <p>Cum sociis natoque penatibus et magnis <a href="#">dis parturient montes</a>, nascetur ridiculus mus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Sed posuere consectetur est at lobortis. Cras mattis consectetur purus sit amet fermentum.</p>
+          <blockquote>
+            <p>Curabitur blandit tempus porttitor. <strong>Nullam quis risus eget urna mollis</strong> ornare vel eu leo. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+          </blockquote>
+          <p>Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
+          <h2>Beach</h2>
+          <p>Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+          <h3>Forest</h3>
+          <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+          <pre><code>Example code block</code></pre>
+          <p>Aenean lacinia bibendum nulla sed consectetur. Etiam porta sem malesuada magna mollis euismod. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa.</p>
+          <h3>Park</h3>
+          <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean lacinia bibendum nulla sed consectetur. Etiam porta sem malesuada magna mollis euismod. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+          <ul>
+            <li>Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</li>
+            <li>Donec id elit non mi porta gravida at eget metus.</li>
+            <li>Nulla vitae elit libero, a pharetra augue.</li>
+          </ul>
+          <p>Donec ullamcorper nulla non metus auctor fringilla. Nulla vitae elit libero, a pharetra augue.</p>
+          <ol>
+            <li>Vestibulum id ligula porta felis euismod semper.</li>
+            <li>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</li>
+            <li>Maecenas sed diam eget risus varius blandit sit amet non magna.</li>
+          </ol>
+          <p>Cras mattis consectetur purus sit amet fermentum. Sed posuere consectetur est at lobortis.</p>
+        </div><!-- /.blog-post -->
+
+        <div class="blog-post">
+          <h2 class="blog-post-title">Family Travel</h2>
+          <p class="blog-post-meta">December 23, 2013 by <a href="#">Jacob</a></p>
+
+          <p>Cum sociis natoque penatibus et magnis <a href="#">dis parturient montes</a>, nascetur ridiculus mus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Sed posuere consectetur est at lobortis. Cras mattis consectetur purus sit amet fermentum.</p>
+          <blockquote>
+            <p>Curabitur blandit tempus porttitor. <strong>Nullam quis risus eget urna mollis</strong> ornare vel eu leo. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+          </blockquote>
+          <p>Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
+          <p>Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+        </div><!-- /.blog-post -->
+
+        <div class="blog-post">
+          <h2 class="blog-post-title">River Cruises</h2>
+          <p class="blog-post-meta">December 14, 2013 by <a href="#">Chris</a></p>
+
+          <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean lacinia bibendum nulla sed consectetur. Etiam porta sem malesuada magna mollis euismod. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+          <ul>
+            <li>Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</li>
+            <li>Donec id elit non mi porta gravida at eget metus.</li>
+            <li>Nulla vitae elit libero, a pharetra augue.</li>
+          </ul>
+          <p>Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
+          <p>Donec ullamcorper nulla non metus auctor fringilla. Nulla vitae elit libero, a pharetra augue.</p>
+        </div><!-- /.blog-post -->
+
+        <!-- <nav class="blog-pagination">
+          <a class="btn btn-outline-primary" href="#">Older</a>
+          <a class="btn btn-outline-secondary disabled" href="#">Newer</a>
+        </nav> -->
+
+      </div><!-- /.blog-main -->
+
+      <aside class="col-md-4 blog-sidebar">
+        <div class="p-3 mb-3 bg-light rounded">
+          <h4 class="font-italic">About</h4>
+          <p class="mb-0">Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
+        </div>
+
+        <div class="p-3">
+          <h4 class="font-italic">Archives</h4>
+          <ol class="list-unstyled mb-0">
+            <li><a href="#">March 2014</a></li>
+            <li><a href="#">February 2014</a></li>
+            <li><a href="#">January 2014</a></li>
+            <li><a href="#">December 2013</a></li>
+            <li><a href="#">November 2013</a></li>
+            <li><a href="#">October 2013</a></li>
+            <li><a href="#">September 2013</a></li>
+            <li><a href="#">August 2013</a></li>
+            <li><a href="#">July 2013</a></li>
+            <li><a href="#">June 2013</a></li>
+            <li><a href="#">May 2013</a></li>
+            <li><a href="#">April 2013</a></li>
+          </ol>
+        </div>
+
+        <div class="p-3">
+          <h4 class="font-italic">Elsewhere</h4>
+          <ol class="list-unstyled">
+            <!-- <li><a href="#">GitHub</a></li> -->
+            <li><a href="#">Twitter</a></li>
+            <li><a href="#">Facebook</a></li>
+          </ol>
+        </div>
+      </aside><!-- /.blog-sidebar -->
+
+    </div><!-- /.row -->
+
+  </main><!-- /.container -->
 
 

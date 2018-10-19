@@ -1,7 +1,8 @@
 import { UserDTO } from './../../dto/user';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../service/auth.service';
+import { PlaceReviewService } from '../../service/place-comment.service';
 
 @Component({
   selector: 'app-login',
@@ -9,11 +10,13 @@ import { AuthService } from '../../service/auth.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  @Input('close') close;
   invalidLogin = false;
   user: UserDTO = new UserDTO();
   constructor(
     private router: Router,
-    private authService: AuthService
+    private authService: AuthService,
+    private reviewService: PlaceReviewService
   ) { }
 
   ngOnInit() {
@@ -24,7 +27,9 @@ export class LoginComponent implements OnInit {
       .subscribe(result => {
         if (result) {
           this.invalidLogin = false;
-          this.router.navigate(['/']);
+          // this.reviewService.loadReviews();
+          // this.router.navigate(['/']);
+          this.close.hide();
           return;
         }
         else {

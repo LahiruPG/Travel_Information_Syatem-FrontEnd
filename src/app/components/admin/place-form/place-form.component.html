@@ -100,10 +100,6 @@
         
       </div>
 
-
-      <div>
-        <ngb-alert *ngIf="successMessage" type="success" (close)="successMessage = null">{{ successMessage }}</ngb-alert>
-      </div>
       <button class="btn btn-primary">Save</button>
       <button class="btn btn-primary" routerLink="/admin/admin-panel/manage-places/">Goto List</button>
 
@@ -128,7 +124,7 @@
     </div>
     <div class="row">
       <div class="col-md-4" *ngFor="let  o of uplodedImageUrlList">
-        <img class="rounded card" [src]="o.url" style="width: 10rem;">
+        <img class="img-thumbnail" [src]="o.url" style="width: 10rem;">
       </div>
     </div>
 

@@ -8,9 +8,9 @@
           <form class="form-signin" #f="ngForm" (ngSubmit)="regester()">
             <div class="form-group">
               <label for="userName">User name</label>
-              <input [(ngModel)]="user.name" name="userName" type="text" class="form-control" placeholder="Enter user name">
+              <input [(ngModel)]="user.name" name="userName1" type="text" class="form-control" placeholder="Enter user name">
               <label for="InputEmail">Email address</label>
-              <input (keyup)="checkEmail(Email.value)" #Email="ngModel" [(ngModel)]="user.email" name="email"
+              <input (keyup)="checkEmail(Email1.value)" #Email1="ngModel"  [(ngModel)]="user.email" name="email1"
                 type="text" class="form-control" placeholder="Enter email">
               <div [hidden]="isEmail" class="alert alert-danger" role="alert">
                 Invalid Email, check it out!
@@ -19,13 +19,16 @@
             </div>
             <div class="form-group">
               <label for="InputPassword1">Password</label>
-              <input [(ngModel)]="password1" name="password" type="password" class="form-control" placeholder="Password">
+              <input [(ngModel)]="password1" name="password1" type="password" class="form-control" placeholder="Enter Password">
               <label for="InputPassword2">Re-enter Password</label>
               <input (keyup)="checkPassword()" [(ngModel)]="password2" name="password2" type="password" class="form-control"
                 placeholder="Re-enter Password">
               <div [hidden]="checkPassword()" class="alert alert-danger" role="alert">
                 Passwords are not match, check it out!
               </div>
+              <div *ngIf="!isOk" class="alert alert-danger" role="alert">
+                  Please check information again
+                </div>
             </div>
             <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Sign Up</button>
             <hr class="my-4">

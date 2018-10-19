@@ -17,17 +17,12 @@ import { PlaceImageDTO } from '../../../dto/place-image';
 })
 export class PlaceFormComponent implements OnInit {
   place: PlaceDTO = new PlaceDTO();
-  userType:string="";
+  userType: string = "";
   id;
-  category:PlaceCategoryDTO[]=[];
+  category: PlaceCategoryDTO[] = [];
   url;
-  file:File= null;
-  uplodedImageUrlList:PlaceImageDTO[]=[];
-  // Alert
-  private _success = new Subject<string>();
-  staticAlertClosed = false;
-  successMessage: string;
-
+  file: File = null;
+  uplodedImageUrlList: PlaceImageDTO[] = [];
 
   constructor(
     private pcategory: PlaceCategoryService,
@@ -43,67 +38,55 @@ export class PlaceFormComponent implements OnInit {
   }
 
   ngOnInit() {
-   
-    this.InitAlert();
     this.pcategory.getAll().subscribe(pc => {
       this.category = pc;
     });
-   
+
   }
 
   save(post) {
-    if(this.userType='user'){
-      this.place.status='request';
+    if (this.userType = 'user') {
+      this.place.status = 'request';
     }
 
-    if (this.id) this.service.update(this.place).subscribe(asd =>{
+    if (this.id) {
+      this.uplodedImageUrlList.forEach(element => {
+        this.place.imageUrl.push(element);
+      });
+
+      this.service.update(this.place).subscribe(asd => {
+        this.router.navigate(['/admin/admin-panel/manage-places']);
+        console.log(asd);
+      });
+    }
+    else this.service.save(this.place).subscribe(asd => {
       this.router.navigate(['/admin/admin-panel/manage-places']);
       console.log(asd);
-      this.changeSuccessMessage();
     });
-    else this.service.save(this.place).subscribe(asd =>{
-      this.router.navigate(['/admin/admin-panel/manage-places']);
-      console.log(asd);
-      this.changeSuccessMessage();
-    });  
 
-    this.saveImageList();
-    
-  }
-
-  InitAlert(): void {
-    this._success.subscribe((message) => this.successMessage = message);
-    this._success.pipe(
-      debounceTime(3000)
-    ).subscribe(() => this.successMessage = null);
-  }
-
-  changeSuccessMessage() {
-    if (this.id) this._success.next(`successfully updated.`);
-    else this._success.next(`successfully saved.`);
   }
 
   onSelectFile(event) {
     if (event.target.files && event.target.files[0]) {
-        var reader = new FileReader();
-        reader.onload = (event: any) => {
-            this.url = <File>event.target.result;
-        }
-        reader.readAsDataURL(event.target.files[0]);
-        this.file=event.target.files[0];
-    }   
-}
+      var reader = new FileReader();
+      reader.onload = (event: any) => {
+        this.url = <File>event.target.result;
+      }
+      reader.readAsDataURL(event.target.files[0]);
+      this.file = event.target.files[0];
+    }
+  }
 
-  uploadImage(){
-    this.service.uploadImage(this.file).subscribe(r => {   
-      let dto:PlaceImageDTO=<PlaceImageDTO>r;   
-      dto.placeId=this.id;    
+  uploadImage() {
+    this.service.uploadImage(this.file).subscribe(r => {
+      let dto: PlaceImageDTO = <PlaceImageDTO>r;
+      dto.placeId = this.id;
       this.uplodedImageUrlList.push(dto);
     });;
   }
 
-  saveImageList(){
-    this.imageService.saveList(this.uplodedImageUrlList).subscribe(r=>{
+  saveImageList() {
+    this.imageService.saveList(this.uplodedImageUrlList).subscribe(r => {
       console.log("image list saved");
     });
 

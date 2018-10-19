@@ -13,7 +13,7 @@ import { CustomFormsModule } from 'ng2-validation';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {HttpClientModule} from "@angular/common/http";
 
-import { AppComponent } from './app.component';
+import { AppComponent, SafePipe } from './app.component';
 import { TopNavbarComponent } from './components/top-navbar/top-navbar.component';
 import { HomeComponent } from './components/home/home.component';
 import { AboutComponent } from './components/about/about.component';
@@ -30,10 +30,14 @@ import { ManagePlaceCategoryComponent } from './components/admin/manage-place-ca
 import { SignupComponent } from './components/signup/signup.component';
 import { UserPanelComponent } from './components/user-panel/user-panel.component';
 
+import { CarouselModule } from 'ngx-bootstrap/carousel';
+import { ModalModule } from 'ngx-bootstrap/modal';
+
 
 @NgModule({
   declarations: [
     AppComponent,
+    SafePipe,
     TopNavbarComponent,
     HomeComponent,
     AboutComponent,
@@ -51,6 +55,9 @@ import { UserPanelComponent } from './components/user-panel/user-panel.component
     UserPanelComponent
   ],
   imports: [
+    CarouselModule.forRoot(),
+    ModalModule.forRoot(),
+    
     BrowserModule,
     FormsModule,
     CustomFormsModule,

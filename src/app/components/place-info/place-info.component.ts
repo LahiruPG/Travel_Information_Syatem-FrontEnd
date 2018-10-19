@@ -16,11 +16,13 @@ import { PlaceImageDTO } from '../../dto/place-image';
 export class PlaceInfoComponent implements OnInit {
     id;
     reviewId;
+    mapUrl:string = "";
     place: PlaceDTO = new PlaceDTO();
     reviews: PlaceReviewDTO[] = [];
     addReview: PlaceReviewDTO = new PlaceReviewDTO();
     currentUser: UserDTO = new UserDTO();
     imageList: PlaceImageDTO[]=[];
+    myInterval = 50000;
 
     // star rating
     starList: boolean[] = [true, true, true, true, true];
@@ -38,7 +40,8 @@ export class PlaceInfoComponent implements OnInit {
         if (this.id) this.service.find(this.id).take(1).subscribe(p => {
             this.place = p;
             this.reviews = p.review;
-            // this.imageList=p.imageUrl;
+             this.imageList=p.imageUrl;
+             this.mapUrl=p.mapLocation;
         });
     }
 
@@ -61,15 +64,15 @@ export class PlaceInfoComponent implements OnInit {
     }
 
     saveReview() {
-        this.addReview.placeId = this.place.id;
-        this.addReview.user = this.currentUser;
-        this.addReview.starCount = this.rating + "";
-        console.log(this.addReview)
-        this.reviewService.save(this.addReview).subscribe(result => {
-            this.addReview.review = "";
-            // window.location.reload();
-            this.loadReviews();
-        });
+        if(this.addReview.review){
+            this.addReview.placeId = this.place.id;
+            this.addReview.user = this.currentUser;
+            this.addReview.starCount = this.rating + "";
+            this.reviewService.save(this.addReview).subscribe(result => {
+                this.addReview.review = "";
+                this.loadReviews();
+            });
+        }
     }
 
     deleteReview(id) {

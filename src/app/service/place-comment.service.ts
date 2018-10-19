@@ -9,6 +9,8 @@ const URL = "/api/v1/placereviews";
 @Injectable()
 export class PlaceReviewService {
 
+  reviews: PlaceReviewDTO[] = [];
+
    constructor(private http: HttpClient) { }
 
   getAll(): Observable<Array<PlaceReviewDTO>> {
@@ -34,5 +36,11 @@ export class PlaceReviewService {
     console.log("put Request - PlaceCategoryService");
     return this.http.put(MAIN_URL + URL, post);
   }
+
+//   loadReviews() {
+//     this.find(this.selectedId).subscribe(res => {
+//         this.reviews = res.review
+//     });
+// }
 
 }

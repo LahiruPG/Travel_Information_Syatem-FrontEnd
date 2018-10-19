@@ -4,102 +4,74 @@
     <h3>{{place.name}}</h3>
   </div>
 
+  <carousel [interval]="myInterval">
+    <slide *ngFor="let img of imageList; let index=index">
+      <img class="img-fluid card-img" [src]="img.url" alt="image slide" style="display: block; width: 100%; height: 500px;">
 
-<!-- <div class="">
-    <ngb-carousel *ngIf="imageList" >
-        <ng-template ngbSlide *ngFor="let img of imageList">
-          <img class="mx-auto" style="height: 500px;" [src]="img.url" alt="Random first slide">
-        </ng-template>
-      </ngb-carousel>
-</div> -->
-
-
-  <div class="card border-white">
-    <img class="card-img-top" [src]="place.notes" alt="Card image cap" *ngIf='place.notes'>
-    <div class="card-body">
-    </div>
-  </div>
+      <div class="carousel-caption">
+        <!-- <h4>Slide {{index}}</h4> -->
+      </div>
+    </slide>
+  </carousel>
 
   <div class="card-group border-secondary">
-    <!-- image card -->
     <div class="card ">
-      <!-- <img class="card-img-top" [src]="place.notes" alt="Card image cap" *ngIf='place.notes'> -->
       <div class="card-body">
         <h5 class="card-title"></h5>
         <p class="card-text">Category : {{place.type}}</p>
         <p class="card-text">Town : {{place.town}}</p>
         <p class="card-text">District : {{place.district}}</p>
         <p class="card-text">Address : {{place.address}}</p>
-        <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
-
-        <div class="embed-responsive embed-responsive-16by9" *ngIf="place.mapLocation">
-          <iframe class="embed-responsive-item" [src]="sanitizer.bypassSecurityTrustResourceUrl(place.mapLocation)"
-            allowfullscreen></iframe>
+        <div class="embed-responsive embed-responsive-16by9" *ngIf="mapUrl">
+          <iframe [src]="mapUrl | safe" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
         </div>
       </div>
     </div>
 
-    <!-- description card -->
     <div class="card">
       <div class="card-body">
         <div class="card-text">
           <h5>Description</h5> {{place.description}}
         </div>
-        <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
       </div>
     </div>
   </div>
 
-  <!-- Star rating -->
-  <!-- <div>
-    <br>
-    <h2>
-      Rate this place
-    </h2>
-    <a *ngFor="let item of starList; let i=index " (click)="setStar(i)">
-      <i class="fa fa-2x" [ngClass]="{'fa-star-o':item,'fa-star':!item}"></i>
-    </a>
-    <br>
-    Rating :- {{rating}} stars
-    <textarea class="form-control"></textarea>
-    <button class="btn btn-primary">Save</button>
-  </div> -->
-
   <div>
-        <div class="comments col-md-9 mt-5" id="comments" >
-          <h3 class="mb-2">Reviews</h3>
-          <!-- comment -->
-          <div class="comment mb-2 row" *ngFor="let r of reviews">
-            <div class="comment-avatar col-md-1 col-sm-2 text-center pr-1">
-              <!-- <a href=""><img class="mx-auto rounded-circle img-fluid" src="http://demos.themes.guide/bodeo/assets/images/users/m102.jpg" alt="avatar"></a> -->
-            </div>
-            <div class="comment-content col-md-11 col-sm-10">
-               
-              <h6 class="comment-meta">
-                <a class=" rounded text-primary">{{r.user.type}}</a>  {{r.user.name}} 
-                <div *ngIf="currentUser.type==='admin' || currentUser.email===r.user.email" (click)="deleteReview(r.id)" class="text-danger ml-2 small btn">Delete this review <span class="fa fa-trash text-danger"></span>
-                  
-                  </div> 
-              </h6>
-              <div class="comment-body">
-                <p>{{r.review}}</p>
-                
-              </div>
-            </div>
-          </div>
-          <!-- /comment -->
-          <div *ngIf="currentUser.email" class="row pt-2">
-            <div class="col-12">
-              <textarea #review="ngModel" [(ngModel)]="addReview.review" name="review" id="review" type="text"
-              class="form-control"  ></textarea>
-              <a class="btn btn-sm btn-primary text-white mt-3" (click)="saveReview()">Post</a>
-            </div>
-          </div>
-          <div *ngIf="!currentUser.email">
-            <p>Login for make review <a class="btn btn-primary text-white" routerLink="/login">Login</a></p>
-          </div>
-
+    <div class="comments col-md-9 mt-5" id="comments">
+      <h3 class="mb-2">Reviews</h3>
+      <!-- comment -->
+      <div class="comment mb-2 row" *ngFor="let r of reviews">
+        <div class="comment-avatar col-md-1 col-sm-2 text-center pr-1">
+          <!-- <a href=""><img class="mx-auto rounded-circle img-fluid" src="http://demos.themes.guide/bodeo/assets/images/users/m102.jpg" alt="avatar"></a> -->
         </div>
+        <div class="comment-content col-md-11 col-sm-10">
+          <h6 class="comment-meta">
+            <a class=" rounded text-primary">{{r.user.type}}</a> {{r.user.name}}
+            <div *ngIf="currentUser.type==='admin' || currentUser.email===r.user.email" (click)="deleteReview(r.id)"
+              class="text-danger ml-2 small btn">Delete this review <span class="fa fa-trash text-danger"></span>
+            </div>
+          </h6>
+          <div class="comment-body">
+            <p>{{r.review}}</p>
+
+          </div>
+        </div>
+      </div>
+      <!-- /comment -->
+      <div *ngIf="currentUser.email" class="row pt-2">
+        <div class="col-12">
+          <textarea #review="ngModel" [(ngModel)]="addReview.review" name="review" id="review" type="text" class="form-control"></textarea>
+          <a class="btn btn-sm btn-primary text-white mt-3" (click)="saveReview()">Post</a>
+        </div>
+      </div>
+      <div *ngIf="!currentUser.email">
+        <p>Login for make review
+
+        </p>
+      </div>
+
+    </div>
 
   </div>
 </div>

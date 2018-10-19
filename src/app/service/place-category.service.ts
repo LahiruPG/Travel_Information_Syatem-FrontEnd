@@ -26,14 +26,14 @@ export class PlaceCategoryService {
     return this.http.delete<boolean>(MAIN_URL + URL + "/" + id);
   }
 
-  save(post) {
+  save(post:PlaceCategoryDTO): Observable<boolean> {
     console.log("post Request - PlaceCategoryService");
-    return this.http.post(MAIN_URL + URL, post);
+    return this.http.post<boolean>(MAIN_URL + URL, post);
   }
 
-  update(post) {
+  update(post:PlaceCategoryDTO): Observable<boolean> {
     console.log("put Request - PlaceCategoryService");
-    return this.http.put(MAIN_URL + URL, post);
+    return this.http.put<boolean>(MAIN_URL + URL, post);
   }
 
 }
